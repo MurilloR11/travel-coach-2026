@@ -1,4 +1,10 @@
 import { SEO } from '@/shared/ui'
+import { HeroSection } from '../components/HeroSection'
+import { ProblemSection } from '../components/ProblemSection'
+import { HowItWorksSection } from '../components/HowItWorksSection'
+import { FeaturesSection } from '../components/FeaturesSection'
+import { HostCountriesSection } from '../components/HostCountriesSection'
+import { FinalCTA } from '../components/FinalCTA'
 
 export function HomePage() {
   return (
@@ -8,9 +14,13 @@ export function HomePage() {
         description="Descubre qué documentos necesitas para entrar a EE.UU., Canadá y México, y planifica una ruta realista entre sedes del Mundial 2026."
         path="/"
       />
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold">Travel Coach 2026</h1>
-        <p className="mt-4 text-lg text-gray-600">Tu guía para el Mundial 2026</p>
+      <main className="flex flex-1 flex-col">
+        <HeroSection />
+        <ProblemSection />
+        <HowItWorksSection />
+        <FeaturesSection />
+        <HostCountriesSection />
+        <FinalCTA />
       </main>
     </>
   )
