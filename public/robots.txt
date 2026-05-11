@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /dashboard
+Disallow: /plans
+Disallow: /profile
+
+Sitemap: https://travelcoach2026.com/sitemap.xml
