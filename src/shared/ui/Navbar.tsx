@@ -42,18 +42,18 @@ export function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-7 md:flex" aria-label="Secciones">
-          <a
-            href="#como-funciona"
+          <Link
+            to={ROUTES.ENTRY_CHECKER}
             className="text-sm font-medium text-white/78 transition-colors hover:text-brand-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-amber"
           >
-            Cómo funciona
-          </a>
-          <a
-            href="#funcionalidades"
+            Requisitos de entrada
+          </Link>
+          <Link
+            to={ROUTES.ROUTE_PLANNER}
             className="text-sm font-medium text-white/78 transition-colors hover:text-brand-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-amber"
           >
-            Funcionalidades
-          </a>
+            Planificar ruta
+          </Link>
         </div>
 
         <Link

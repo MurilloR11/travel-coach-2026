@@ -6,9 +6,10 @@ interface SEOProps {
   path?: string
   ogImage?: string
   noIndex?: boolean
+  structuredData?: Record<string, unknown>
 }
 
-export function SEO({ title, description, path, ogImage, noIndex = false }: SEOProps) {
+export function SEO({ title, description, path, ogImage, noIndex = false, structuredData }: SEOProps) {
   const fullTitle = `${title} | ${APP_NAME}`
   const canonical = path ? `${APP_URL}${path}` : undefined
 
@@ -29,6 +30,13 @@ export function SEO({ title, description, path, ogImage, noIndex = false }: SEOP
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      )}
     </>
   )
 }
