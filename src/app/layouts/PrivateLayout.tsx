@@ -5,7 +5,7 @@ export function PrivateLayout() {
     <>
       <meta name="robots" content="noindex, nofollow" />
       <ScrollRestoration />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-brand-navy">
         <Outlet />
       </div>
     </>
