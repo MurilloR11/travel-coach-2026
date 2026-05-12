@@ -8,6 +8,9 @@ import {
   Bookmark,
   Globe,
   ArrowRight,
+  FileCheck,
+  Info,
+  AlertTriangle,
 } from 'lucide-react'
 
 interface IconProps {
@@ -49,4 +52,16 @@ export function GlobeIcon({ size = 22, stroke = 'currentColor' }: IconProps) {
 
 export function ArrowIcon({ size = 18, stroke = 'currentColor' }: IconProps) {
   return <ArrowRight size={size} color={stroke} aria-hidden="true" />
+}
+
+export function FileCheckIcon({ size = 18, stroke = 'currentColor' }: IconProps) {
+  return <FileCheck size={size} color={stroke} aria-hidden="true" />
+}
+
+export function InfoIcon({ size = 16, stroke = 'currentColor' }: IconProps) {
+  return <Info size={size} color={stroke} aria-hidden="true" />
+}
+
+export function AlertIcon({ size = 16, stroke = 'currentColor' }: IconProps) {
+  return <AlertTriangle size={size} color={stroke} aria-hidden="true" />
 }
