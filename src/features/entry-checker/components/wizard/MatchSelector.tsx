@@ -12,11 +12,12 @@ const PHASE_LABELS: Record<MatchPhase, string> = {
   final: 'Final',
 }
 
+const DATE_LONG = new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short', year: 'numeric' })
+const MONTH_SHORT = new Intl.DateTimeFormat('es', { month: 'short' })
+
 function formatDate(dateStr: string): string {
   const [year, month, day] = dateStr.split('-').map(Number)
-  return new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short', year: 'numeric' }).format(
-    new Date(year, month - 1, day),
-  )
+  return DATE_LONG.format(new Date(year, month - 1, day))
 }
 
 // ─── Match card ───────────────────────────────────────────────────────────────
@@ -34,7 +35,7 @@ function MatchCard({ match, isSelected, isMyTeam, onToggle }: MatchCardProps) {
   const [y, mo, d] = match.date.split('-').map(Number)
   const dateObj = new Date(y, mo - 1, d)
   const day = dateObj.getDate()
-  const month = new Intl.DateTimeFormat('es', { month: 'short' }).format(dateObj)
+  const month = MONTH_SHORT.format(dateObj)
 
   return (
     <button

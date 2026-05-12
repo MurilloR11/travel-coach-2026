@@ -15,7 +15,7 @@ export function EntryCheckerPage() {
       <main className="bg-brand-navy px-4 pt-24 pb-10 sm:px-6 sm:pt-28 sm:pb-14">
         <div className="mx-auto mb-10 max-w-2xl">
           <div className="mb-4 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-amber/15">
+            <div className="flex size-9 items-center justify-center rounded-xl bg-brand-amber/15">
               <FileCheckIcon size={18} stroke="#F59E0B" />
             </div>
             <span className="font-mono text-[11px] uppercase tracking-widest text-brand-amber">
