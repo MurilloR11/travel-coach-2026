@@ -1,9 +1,10 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, ScrollRestoration } from 'react-router-dom'
 
 export function PrivateLayout() {
   return (
     <>
       <meta name="robots" content="noindex, nofollow" />
+      <ScrollRestoration />
       <div className="min-h-screen bg-background">
         <Outlet />
       </div>

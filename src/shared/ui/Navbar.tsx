@@ -43,16 +43,16 @@ export function Navbar() {
 
         <div className="hidden items-center gap-7 md:flex" aria-label="Secciones">
           <Link
-            to={ROUTES.ENTRY_CHECKER}
+            to="/#como-funciona"
             className="text-sm font-medium text-white/78 transition-colors hover:text-brand-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-amber"
           >
-            Requisitos de entrada
+            Cómo funciona
           </Link>
           <Link
-            to={ROUTES.ROUTE_PLANNER}
+            to="/#funcionalidades"
             className="text-sm font-medium text-white/78 transition-colors hover:text-brand-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-amber"
           >
-            Planificar ruta
+            Herramientas
           </Link>
         </div>
 
