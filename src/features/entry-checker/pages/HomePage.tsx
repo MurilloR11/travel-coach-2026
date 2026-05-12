@@ -11,7 +11,6 @@ export function HomePage() {
   return (
     <>
       <SEO
-        title="Planifica tu viaje al Mundial 2026"
         description="Descubre qué documentos necesitas para entrar a EE.UU., Canadá y México, y planifica una ruta realista entre sedes del Mundial 2026."
         path="/"
         ogImage={APP_OG_IMAGE}

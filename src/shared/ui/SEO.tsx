@@ -1,7 +1,7 @@
 import { APP_NAME, APP_URL } from '@/shared/constants'
 
 interface SEOProps {
-  title: string
+  title?: string
   description: string
   path?: string
   ogImage?: string
@@ -10,7 +10,7 @@ interface SEOProps {
 }
 
 export function SEO({ title, description, path, ogImage, noIndex = false, structuredData }: SEOProps) {
-  const fullTitle = `${title} | ${APP_NAME}`
+  const fullTitle = title ? `${title} | ${APP_NAME}` : APP_NAME
   const canonical = path ? `${APP_URL}${path}` : undefined
 
   return (
