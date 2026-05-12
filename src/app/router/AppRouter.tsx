@@ -2,9 +2,18 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { PublicLayout } from '@/app/layouts/PublicLayout'
 import { PrivateLayout } from '@/app/layouts/PrivateLayout'
 
+function PageSpinner() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-brand-navy">
+      <div className="size-8 animate-spin rounded-full border-2 border-brand-amber border-t-transparent" />
+    </div>
+  )
+}
+
 const router = createBrowserRouter([
   {
     element: <PublicLayout />,
+    hydrateFallbackElement: <PageSpinner />,
     children: [
       {
         path: '/',
