@@ -2,6 +2,14 @@ import { Link } from 'react-router-dom'
 import { ROUTES } from '@/shared/constants'
 import { ArrowIcon } from '@/shared/ui/Icons'
 
+const CONTOUR_RINGS = Array.from({ length: 14 }, (_, i) => ({
+  id: `cta-ring-${i}`,
+  cx: 360 + Math.sin(i * 0.6) * 30,
+  cy: 240 + Math.cos(i * 0.5) * 20,
+  rx: (40 + i * 28) * 1.4,
+  ry: 40 + i * 28,
+}))
+
 export function FinalCTA() {
   return (
     <section
@@ -23,8 +31,8 @@ export function FinalCTA() {
       <div aria-hidden="true" className="pointer-events-none absolute -bottom-40 -left-48 opacity-35">
         <svg width="760" height="620" viewBox="0 0 720 480" fill="none">
           <g stroke="rgba(245,158,11,0.18)" strokeWidth="1">
-            {Array.from({ length: 14 }).map((_, i) => (
-              <ellipse key={i} cx={360 + Math.sin(i * 0.6) * 30} cy={240 + Math.cos(i * 0.5) * 20} rx={(40 + i * 28) * 1.4} ry={40 + i * 28} />
+            {CONTOUR_RINGS.map((ring) => (
+              <ellipse key={ring.id} cx={ring.cx} cy={ring.cy} rx={ring.rx} ry={ring.ry} />
             ))}
           </g>
         </svg>
@@ -40,7 +48,7 @@ export function FinalCTA() {
 
         <h2
           id="final-cta-title"
-          className="font-display mt-2 font-extrabold tracking-tight text-brand-off-white"
+          className="font-display mt-2 font-semibold tracking-tight text-brand-off-white"
           style={{ fontSize: 'clamp(40px, 5.6vw, 76px)', lineHeight: 1.06 }}
         >
           Deja de adivinar.

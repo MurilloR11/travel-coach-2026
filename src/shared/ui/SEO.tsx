@@ -34,7 +34,9 @@ export function SEO({ title, description, path, ogImage, noIndex = false, struct
       {structuredData && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          ref={(el) => {
+            if (el) el.textContent = JSON.stringify(structuredData)
+          }}
         />
       )}
     </>

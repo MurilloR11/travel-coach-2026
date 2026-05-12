@@ -11,7 +11,7 @@ export function RoutePlannerPage() {
         ogImage={APP_OG_IMAGE}
       />
       <main className="p-8">
-        <h1 className="text-2xl font-bold">Planifica tu ruta entre sedes</h1>
+        <h1 className="text-2xl font-semibold">Planifica tu ruta entre sedes</h1>
       </main>
     </>
   )

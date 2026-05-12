@@ -31,7 +31,7 @@ export function Navbar() {
           aria-label="Ir al inicio — TravelCoach 2026"
         >
           <span
-            className="flex h-[30px] w-[30px] items-center justify-center rounded-lg bg-brand-amber"
+            className="flex size-7.5 items-center justify-center rounded-lg bg-brand-amber"
             aria-hidden="true"
           >
             <RouteIcon size={16} stroke="#0F172A" />

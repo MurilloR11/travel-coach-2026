@@ -41,7 +41,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="flex h-[30px] w-[30px] items-center justify-center rounded-lg bg-brand-amber" aria-hidden="true">
+              <span className="flex size-7.5 items-center justify-center rounded-lg bg-brand-amber" aria-hidden="true">
                 <RouteIcon size={16} stroke="#0F172A" />
               </span>
               <span className="font-display text-lg font-bold tracking-tight text-brand-off-white">

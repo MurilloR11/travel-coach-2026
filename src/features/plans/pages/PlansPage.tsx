@@ -9,7 +9,7 @@ export function PlansPage() {
         noIndex
       />
       <main className="p-8">
-        <h1 className="text-2xl font-bold">Mis Planes</h1>
+        <h1 className="text-2xl font-semibold">Mis Planes</h1>
       </main>
     </>
   )

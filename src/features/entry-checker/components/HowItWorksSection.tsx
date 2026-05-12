@@ -22,16 +22,16 @@ function SampleRouteMap() {
       </defs>
       <rect width="1080" height="260" fill="url(#how-grid)" />
       <g fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1">
-        {[60, 120, 180, 240].map((r, i) => (
-          <ellipse key={i} cx="540" cy="130" rx={r * 2} ry={r * 0.9} />
+        {[60, 120, 180, 240].map((r) => (
+          <ellipse key={r} cx="540" cy="130" rx={r * 2} ry={r * 0.9} />
         ))}
       </g>
       <path
         d={`M ${cities[0].x} ${cities[0].y} Q 550 30, ${cities[1].x} ${cities[1].y} Q 350 200, ${cities[2].x} ${cities[2].y}`}
         fill="none" stroke="url(#how-route)" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 6"
       />
-      {cities.map((city, i) => (
-        <g key={i} transform={`translate(${city.x},${city.y})`}>
+      {cities.map((city) => (
+        <g key={city.code} transform={`translate(${city.x},${city.y})`}>
           <circle r="14" fill="#172033" stroke="#F59E0B" strokeWidth="2" />
           <circle r="4" fill="#F59E0B" />
           <g transform="translate(18,-6)">
@@ -58,20 +58,20 @@ function StepCard({ num, icon, title, lead, tags }: StepCardProps) {
   return (
     <li className="flex flex-col gap-3.5 rounded-[14px] border border-white/6 bg-brand-navy-mid p-7 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-amber/35 hover:bg-[#1A2236]">
       <div className="flex items-start justify-between">
-        <div className="flex h-11 w-11 items-center justify-center rounded-[10px] border border-brand-amber/25 bg-brand-amber/10">
+        <div className="flex size-11 items-center justify-center rounded-[10px] border border-brand-amber/25 bg-brand-amber/10">
           {icon}
         </div>
         <span className="font-display text-[44px] font-extrabold leading-none tracking-tight text-brand-amber/85">
           {num}
         </span>
       </div>
-      <h3 className="font-display mt-2 text-[22px] font-extrabold tracking-tight text-brand-off-white">{title}</h3>
+      <h3 className="font-display mt-2 text-[22px] font-semibold tracking-tight text-brand-off-white">{title}</h3>
       <p className="text-[15px] leading-[1.55] text-brand-slate">{lead}</p>
       <div className="mt-1.5 flex flex-wrap gap-1.5">
         {tags.map((tag) => (
           <span
             key={tag}
-            className="font-mono rounded-full border border-white/8 bg-white/4 px-2.5 py-1 text-[10px] uppercase tracking-[0.1em] text-brand-slate-light"
+            className="font-mono rounded-full border border-white/8 bg-white/4 px-2.5 py-1 text-[10px] uppercase tracking-widest text-brand-slate-light"
           >
             {tag}
           </span>
@@ -125,7 +125,7 @@ export function HowItWorksSection() {
       />
 
       <div className="relative mx-auto max-w-6xl px-6">
-        <div className="mb-16 max-w-[720px]">
+        <div className="mb-16 max-w-180">
           <div className="mb-4 flex items-center gap-2.5">
             <span className="h-px w-7 bg-brand-amber" aria-hidden="true" />
             <span className="font-mono text-[12px] uppercase tracking-[0.14em] text-brand-amber">
@@ -134,7 +134,7 @@ export function HowItWorksSection() {
           </div>
           <h2
             id="how-title"
-            className="font-display font-extrabold tracking-tight text-brand-off-white"
+            className="font-display font-semibold tracking-tight text-brand-off-white"
             style={{ fontSize: 'clamp(36px, 4.6vw, 56px)' }}
           >
             Tres pasos. Sin hojas de cálculo. Sin arrepentimientos.
@@ -154,11 +154,11 @@ export function HowItWorksSection() {
               <p className="font-mono text-[11px] tracking-[0.14em] text-brand-amber">
                 RUTA DE EJEMPLO · FASE DE GRUPOS → OCTAVOS
               </p>
-              <h4 className="font-display mt-1 text-[22px] font-extrabold tracking-tight text-brand-off-white">
+              <h4 className="font-display mt-1 text-[22px] font-semibold tracking-tight text-brand-off-white">
                 NYC → Toronto → Ciudad de México
               </h4>
             </div>
-            <div className="flex gap-4 sm:gap-[18px]">
+            <div className="flex gap-4 sm:gap-4.5">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-brand-slate">Distancia</p>
                 <p className="font-display mt-0.5 text-[18px] font-extrabold text-brand-off-white">3,840 km</p>

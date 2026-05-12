@@ -16,6 +16,7 @@ export function FlagIcon({ country, width = 22, height = 14 }: FlagIconProps) {
     const sh = h / stripes
     const cantonW = w * 0.4
     const cantonH = sh * 4
+    const stripeFills = ['#B22234', '#FFFFFF', '#B22234', '#FFFFFF', '#B22234', '#FFFFFF', '#B22234']
     return (
       <svg
         width={w}
@@ -24,8 +25,8 @@ export function FlagIcon({ country, width = 22, height = 14 }: FlagIconProps) {
         aria-hidden="true"
         className="inline-block shrink-0 rounded-sm shadow-[0_0_0_1px_rgba(255,255,255,0.06)]"
       >
-        {Array.from({ length: stripes }).map((_, i) => (
-          <rect key={i} x={0} y={i * sh} width={w} height={sh} fill={i % 2 === 0 ? '#B22234' : '#FFFFFF'} />
+        {stripeFills.map((fill, stripeIdx) => (
+          <rect key={fill + stripeIdx} x={0} y={stripeIdx * sh} width={w} height={sh} fill={fill} />
         ))}
         <rect x={0} y={0} width={cantonW} height={cantonH} fill="#3C3B6E" />
       </svg>

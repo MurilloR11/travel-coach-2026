@@ -3,15 +3,23 @@ import { ROUTES } from '@/shared/constants'
 import { ArrowIcon } from '@/shared/ui/Icons'
 import { FlagIcon } from '@/shared/ui/FlagIcon'
 
+const HERO_RINGS = Array.from({ length: 14 }, (_, i) => ({
+  id: `hero-ring-${i}`,
+  cx: 360 + Math.sin(i * 0.6) * 30,
+  cy: 240 + Math.cos(i * 0.5) * 20,
+  rx: (40 + i * 28) * 1.4,
+  ry: 40 + i * 28,
+}))
+
 // ─── Complexity dots ──────────────────────────────────────────────────────────
 
 function ComplexityDots({ level }: { level: 'green' | 'amber' }) {
   const onColor = level === 'green' ? '#34D399' : '#F59E0B'
   return (
     <span className="flex gap-1.5" aria-hidden="true">
-      <i className="h-2 w-2 rounded-full" style={{ background: onColor, boxShadow: `0 0 8px ${onColor}` }} />
-      <i className="h-2 w-2 rounded-full bg-white/12" />
-      <i className="h-2 w-2 rounded-full bg-white/12" />
+      <i className="size-2 rounded-full" style={{ background: onColor, boxShadow: `0 0 8px ${onColor}` }} />
+      <i className="size-2 rounded-full bg-white/12" />
+      <i className="size-2 rounded-full bg-white/12" />
     </span>
   )
 }
@@ -59,16 +67,16 @@ function RouteMapSVG() {
       </defs>
       <rect width="520" height="420" fill="url(#hero-grid)" opacity="0.6" />
       <g fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth="1" opacity="0.7">
-        {[60, 120, 180, 240].map((r, i) => (
-          <ellipse key={i} cx="260" cy="210" rx={r * 1.2} ry={r * 0.85} />
+        {[60, 120, 180, 240].map((r) => (
+          <ellipse key={r} cx="260" cy="210" rx={r * 1.2} ry={r * 0.85} />
         ))}
       </g>
       <path
         d={`M ${cities[0].x} ${cities[0].y} Q 260 60, ${cities[1].x} ${cities[1].y} Q 180 280, ${cities[2].x} ${cities[2].y}`}
         fill="none" stroke="url(#hero-route)" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 6"
       />
-      {cities.map((city, i) => (
-        <g key={i} transform={`translate(${city.x},${city.y})`}>
+      {cities.map((city) => (
+        <g key={city.code} transform={`translate(${city.x},${city.y})`}>
           <circle r="14" fill="#172033" stroke="#F59E0B" strokeWidth="2" />
           <circle r="4" fill="#F59E0B" />
           <g transform="translate(18,-6)">
@@ -180,8 +188,8 @@ export function HeroSection() {
       <div aria-hidden="true" className="pointer-events-none absolute -right-44 -top-28 opacity-35">
         <svg width="760" height="620" viewBox="0 0 720 480" fill="none">
           <g stroke="rgba(245,158,11,0.18)" strokeWidth="1">
-            {Array.from({ length: 14 }).map((_, i) => (
-              <ellipse key={i} cx={360 + Math.sin(i * 0.6) * 30} cy={240 + Math.cos(i * 0.5) * 20} rx={(40 + i * 28) * 1.4} ry={40 + i * 28} />
+            {HERO_RINGS.map((ring) => (
+              <ellipse key={ring.id} cx={ring.cx} cy={ring.cy} rx={ring.rx} ry={ring.ry} />
             ))}
           </g>
         </svg>
@@ -199,7 +207,7 @@ export function HeroSection() {
 
           <h1
             id="hero-title"
-            className="font-display font-extrabold leading-[1.06] tracking-tight text-brand-off-white"
+            className="font-display font-semibold leading-[1.06] tracking-tight text-brand-off-white"
             style={{ fontSize: 'clamp(44px, 6vw, 84px)', margin: '12px 0 28px' }}
           >
             Tu viaje al Mundial 2026,

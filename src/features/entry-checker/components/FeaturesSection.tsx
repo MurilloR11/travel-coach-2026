@@ -35,7 +35,7 @@ function ComplexityRow({ country, code, status, level }: ComplexityRowProps) {
       <div className="flex items-center gap-2">
         <span className="text-xs text-brand-slate">{status}</span>
         <span
-          className="h-2 w-2 rounded-full"
+          className="size-2 rounded-full"
           style={{ background: color, boxShadow: `0 0 8px ${color}` }}
           aria-hidden="true"
         />
@@ -90,10 +90,10 @@ const CHECKLIST_ITEMS = [
 function ChecklistAside() {
   return (
     <ul className="flex flex-col gap-2.5">
-      {CHECKLIST_ITEMS.map((item, i) => (
-        <li key={i} className="flex items-center gap-2.5 text-[13px] text-brand-off-white">
+      {CHECKLIST_ITEMS.map((item) => (
+        <li key={item.t} className="flex items-center gap-2.5 text-[13px] text-brand-off-white">
           <span
-            className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded border border-white/18 text-[12px] font-bold text-brand-navy"
+            className="flex size-4.5 shrink-0 items-center justify-center rounded border border-white/18 text-[12px] font-bold text-brand-navy"
             style={{ background: item.done ? '#F59E0B' : 'transparent' }}
           >
             {item.done ? '✓' : ''}
@@ -117,14 +117,14 @@ const SAVED_PLANS = [
 function PlansAside() {
   return (
     <ul className="flex flex-col gap-2">
-      {SAVED_PLANS.map((plan, i) => (
+      {SAVED_PLANS.map((plan) => (
         <li
-          key={i}
+          key={plan.name}
           className="flex items-center justify-between rounded-lg border border-white/6 bg-white/3 px-3 py-2.5"
         >
           <div>
             <p className="text-[13px] font-medium text-brand-off-white">{plan.name}</p>
-            <p className="font-mono text-[10px] tracking-[0.1em] text-brand-slate">
+            <p className="font-mono text-[10px] tracking-widest text-brand-slate">
               {plan.days} DÍAS · FATIGA {plan.score}
             </p>
           </div>
@@ -148,10 +148,10 @@ function FeatureCard({ icon, title, body, aside }: FeatureCardProps) {
   return (
     <li className="grid grid-cols-1 gap-7 rounded-[14px] border border-white/6 bg-brand-navy-mid p-7 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-amber/35 hover:bg-[#1A2236] sm:grid-cols-[1.1fr_1fr]">
       <div className="flex flex-col gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-[10px] border border-brand-amber/25 bg-brand-amber/10">
+        <div className="flex size-11 items-center justify-center rounded-[10px] border border-brand-amber/25 bg-brand-amber/10">
           {icon}
         </div>
-        <h3 className="font-display mt-2 text-[22px] font-extrabold tracking-tight text-brand-off-white">{title}</h3>
+        <h3 className="font-display mt-2 text-[22px] font-semibold tracking-tight text-brand-off-white">{title}</h3>
         <p className="text-[15px] leading-[1.55] text-brand-slate">{body}</p>
       </div>
       <div className="flex flex-col justify-center rounded-[10px] border border-white/6 bg-white/2 p-3.5">
@@ -206,7 +206,7 @@ export function FeaturesSection() {
             </div>
             <h2
               id="features-title"
-              className="font-display font-extrabold tracking-tight text-brand-off-white"
+              className="font-display font-semibold tracking-tight text-brand-off-white"
               style={{ fontSize: 'clamp(36px, 4.6vw, 56px)', maxWidth: 720 }}
             >
               Herramientas que hacen lo difícil, aburrido.
@@ -218,8 +218,8 @@ export function FeaturesSection() {
         </div>
 
         <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2" aria-label="Funcionalidades principales">
-          {FEATURES.map((f, i) => (
-            <FeatureCard key={i} {...f} />
+          {FEATURES.map((f) => (
+            <FeatureCard key={f.title} {...f} />
           ))}
         </ul>
       </div>

@@ -11,7 +11,7 @@ export function EntryCheckerPage() {
         ogImage={APP_OG_IMAGE}
       />
       <main className="p-8">
-        <h1 className="text-2xl font-bold">¿Qué documentos necesitas para entrar?</h1>
+        <h1 className="text-2xl font-semibold">¿Qué documentos necesitas para entrar?</h1>
       </main>
     </>
   )

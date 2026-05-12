@@ -11,7 +11,7 @@ interface ProblemCardProps {
 function ProblemCard({ num, icon, title, body }: ProblemCardProps) {
   return (
     <li className="group grid grid-cols-[44px_1fr] gap-5 rounded-[14px] border border-black/8 bg-white p-7 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-18px_rgba(11,18,32,0.18)]">
-      <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-brand-amber">
+      <div className="flex size-11 items-center justify-center rounded-[10px] bg-brand-amber">
         {icon}
       </div>
       <div>
@@ -19,7 +19,7 @@ function ProblemCard({ num, icon, title, body }: ProblemCardProps) {
           <span className="font-mono text-[11px] tracking-[0.14em] text-brand-amber-dim">{num}</span>
           <span className="h-px w-7 bg-black/18" aria-hidden="true" />
         </div>
-        <h3 className="font-display text-[22px] font-extrabold tracking-tight text-brand-navy">{title}</h3>
+        <h3 className="font-display text-[22px] font-semibold tracking-tight text-brand-navy">{title}</h3>
         <p className="mt-2 text-[15px] leading-[1.6] text-brand-navy/55">{body}</p>
       </div>
     </li>
@@ -61,7 +61,7 @@ export function ProblemSection() {
             </div>
             <h2
               id="problem-title"
-              className="font-display font-extrabold tracking-tight text-brand-navy"
+              className="font-display font-semibold tracking-tight text-brand-navy"
               style={{ fontSize: 'clamp(36px, 4.6vw, 56px)', maxWidth: 520 }}
             >
               Por qué planificar un viaje al Mundial es más difícil de lo que parece.
