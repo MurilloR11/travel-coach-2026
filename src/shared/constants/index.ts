@@ -9,4 +9,5 @@ export const ROUTES = {
   DASHBOARD: '/dashboard',
   PLANS: '/plans',
   PROFILE: '/profile',
+  LEGAL: '/legal',
 } as const

@@ -36,6 +36,13 @@ const router = createBrowserRouter([
             Component: m.RoutePlannerPage,
           })),
       },
+      {
+        path: '/legal',
+        lazy: () =>
+          import('@/features/legal/pages/LegalPage').then((m) => ({
+            Component: m.LegalPage,
+          })),
+      },
     ],
   },
   {
