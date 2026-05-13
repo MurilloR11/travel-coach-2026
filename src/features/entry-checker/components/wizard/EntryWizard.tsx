@@ -1,7 +1,9 @@
+import { PDFDownloadLink } from '@react-pdf/renderer'
 import { useEntryWizard } from '../../hooks/useEntryWizard'
 import type { WizardStep } from '../../hooks/useEntryWizard'
 import { ChecklistResult } from './ChecklistResult'
 import { CountrySelector } from './CountrySelector'
+import { EntryResultPdf } from './EntryResultPdf'
 import { MatchSelector } from './MatchSelector'
 
 const STEP_LABELS: Record<WizardStep, string> = {
@@ -87,13 +89,21 @@ export function EntryWizard() {
             Siguiente
           </button>
         ) : (
-          <button
-            type="button"
-            onClick={wizard.reset}
-            className="font-mono rounded-full border border-white/12 bg-white/4 px-5 py-2.5 text-[12px] uppercase tracking-widest text-brand-slate-light transition-colors hover:border-white/24 hover:text-brand-off-white"
-          >
-            Empezar de nuevo
-          </button>
+          selectedCountry && requirements && (
+            <PDFDownloadLink
+              document={
+                <EntryResultPdf
+                  selectedCountry={selectedCountry}
+                  hostCountries={hostCountries}
+                  requirements={requirements}
+                />
+              }
+              fileName={`requisitos-entrada-${selectedCountry.code.toLowerCase()}.pdf`}
+              className="font-mono rounded-full bg-brand-amber px-6 py-2.5 text-[12px] uppercase tracking-widest text-brand-navy font-semibold transition-opacity"
+            >
+              {({ loading }) => (loading ? 'Generando PDF…' : 'Descargar PDF')}
+            </PDFDownloadLink>
+          )
         )}
       </div>
     </div>
