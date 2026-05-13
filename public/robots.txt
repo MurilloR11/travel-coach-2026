@@ -5,4 +5,4 @@ Disallow: /dashboard
 Disallow: /plans
 Disallow: /profile
 
-Sitemap: https://travelcoach2026.com/sitemap.xml
+Sitemap: https://travel-coach-2026.mstack.workers.dev/sitemap.xml
