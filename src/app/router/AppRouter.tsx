@@ -1,10 +1,20 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { PublicLayout } from '@/app/layouts/PublicLayout'
+import { LegalLayout } from '@/app/layouts/LegalLayout'
 import { PrivateLayout } from '@/app/layouts/PrivateLayout'
+import { PublicLayout } from '@/app/layouts/PublicLayout'
+
+function PageSpinner() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-brand-navy">
+      <div className="size-8 animate-spin rounded-full border-2 border-brand-amber border-t-transparent" />
+    </div>
+  )
+}
 
 const router = createBrowserRouter([
   {
     element: <PublicLayout />,
+    hydrateFallbackElement: <PageSpinner />,
     children: [
       {
         path: '/',
@@ -25,6 +35,18 @@ const router = createBrowserRouter([
         lazy: () =>
           import('@/features/route-planner/pages/RoutePlannerPage').then((m) => ({
             Component: m.RoutePlannerPage,
+          })),
+      },
+    ],
+  },
+  {
+    element: <LegalLayout />,
+    children: [
+      {
+        path: '/legal',
+        lazy: () =>
+          import('@/features/legal/pages/LegalPage').then((m) => ({
+            Component: m.LegalPage,
           })),
       },
     ],

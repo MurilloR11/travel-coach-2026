@@ -1,1 +1,7 @@
 export { SEO } from './SEO'
+export { Navbar } from './Navbar'
+export { Footer } from './Footer'
+export * from './Icons'
+export { FlagIcon } from './FlagIcon'
+export { ErrorBoundary } from './ErrorBoundary'
+export { ExternalLink } from './ExternalLink'

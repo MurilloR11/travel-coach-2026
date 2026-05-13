@@ -1,9 +1,13 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, ScrollRestoration } from 'react-router-dom'
+import { Navbar, Footer } from '@/shared/ui'
 
 export function PublicLayout() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex min-h-screen flex-col bg-white">
+      <ScrollRestoration />
+      <Navbar />
       <Outlet />
+      <Footer />
     </div>
   )
 }
