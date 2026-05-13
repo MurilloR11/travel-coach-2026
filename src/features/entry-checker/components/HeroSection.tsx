@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ROUTES } from '@/shared/constants'
+import { FlagIcon } from '@/shared/ui/FlagIcon'
 import { ArrowIcon } from '@/shared/ui/Icons'
 import { HeroPlanCard } from './HeroPlanCard'
 
@@ -100,7 +101,12 @@ export function HeroSection() {
 
           <div className="font-mono mt-9 flex flex-wrap items-center gap-4 text-[13px] text-brand-slate">
             <span className="text-brand-amber">●</span>
-            <span>Cubre USA · Canadá · México</span>
+            <span className="flex items-center gap-2">
+              <FlagIcon country="usa" width={18} height={12} />
+              <FlagIcon country="canada" width={18} height={12} />
+              <FlagIcon country="mexico" width={18} height={12} />
+              USA · Canadá · México
+            </span>
             <span className="opacity-40">/</span>
             <span>16 ciudades sede</span>
             <span className="opacity-40">/</span>

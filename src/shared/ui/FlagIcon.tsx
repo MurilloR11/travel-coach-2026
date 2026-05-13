@@ -1,55 +1,31 @@
+import { hasFlag } from 'country-flag-icons'
+import * as Flags from 'country-flag-icons/react/3x2'
+
 type FlagCountry = 'usa' | 'canada' | 'mexico'
+
+const ISO_CODE: Record<FlagCountry, string> = {
+  usa: 'US',
+  canada: 'CA',
+  mexico: 'MX',
+}
 
 interface FlagIconProps {
   country: FlagCountry
   width?: number
   height?: number
+  className?: string
 }
 
-export function FlagIcon({ country, width = 22, height = 14 }: FlagIconProps) {
-  const w = width
-  const h = height
-
-  if (country === 'usa') {
-    // 7 horizontal stripes (red/white) + blue canton top-left
-    const stripes = 7
-    const sh = h / stripes
-    const cantonW = w * 0.4
-    const cantonH = sh * 4
-    const stripeFills = ['#B22234', '#FFFFFF', '#B22234', '#FFFFFF', '#B22234', '#FFFFFF', '#B22234']
-    return (
-      <svg
-        width={w}
-        height={h}
-        viewBox={`0 0 ${w} ${h}`}
-        aria-hidden="true"
-        className="inline-block shrink-0 rounded-sm shadow-[0_0_0_1px_rgba(255,255,255,0.06)]"
-      >
-        {stripeFills.map((fill, stripeIdx) => (
-          <rect key={fill + stripeIdx} x={0} y={stripeIdx * sh} width={w} height={sh} fill={fill} />
-        ))}
-        <rect x={0} y={0} width={cantonW} height={cantonH} fill="#3C3B6E" />
-      </svg>
-    )
-  }
-
-  const colors: Record<'canada' | 'mexico', [string, string, string]> = {
-    canada: ['#D52B1E', '#FFFFFF', '#D52B1E'],
-    mexico: ['#006847', '#FFFFFF', '#CE1126'],
-  }
-  const [a, b, c] = colors[country]
-  const colW = w / 3
+export function FlagIcon({ country, width, height, className }: FlagIconProps) {
+  const code = ISO_CODE[country]
+  if (!hasFlag(code)) return null
+  const FlagComponent = Flags[code as keyof typeof Flags]
   return (
-    <svg
-      width={w}
-      height={h}
-      viewBox={`0 0 ${w} ${h}`}
+    <FlagComponent
+      title={country}
       aria-hidden="true"
-      style={{ display: 'inline-block', borderRadius: 2, boxShadow: '0 0 0 1px rgba(255,255,255,0.06)', flexShrink: 0 }}
-    >
-      <rect x={0} y={0} width={colW} height={h} fill={a} />
-      <rect x={colW} y={0} width={colW} height={h} fill={b} />
-      <rect x={colW * 2} y={0} width={colW} height={h} fill={c} />
-    </svg>
+      style={width !== undefined ? { width, height } : undefined}
+      className={`inline-block shrink-0 rounded-sm shadow-[0_0_0_1px_rgba(255,255,255,0.06)] ${className ?? ''}`}
+    />
   )
 }
