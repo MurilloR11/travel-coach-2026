@@ -1,9 +1,63 @@
 import { memo, useCallback, useMemo, useState } from 'react'
-import { hasFlag } from 'country-flag-icons'
-import * as Flags from 'country-flag-icons/react/3x2'
+import DZ from 'country-flag-icons/string/3x2/DZ'
+import DE from 'country-flag-icons/string/3x2/DE'
+import SA from 'country-flag-icons/string/3x2/SA'
+import AR from 'country-flag-icons/string/3x2/AR'
+import AU from 'country-flag-icons/string/3x2/AU'
+import AT from 'country-flag-icons/string/3x2/AT'
+import BE from 'country-flag-icons/string/3x2/BE'
+import BA from 'country-flag-icons/string/3x2/BA'
+import BR from 'country-flag-icons/string/3x2/BR'
+import CV from 'country-flag-icons/string/3x2/CV'
+import CA from 'country-flag-icons/string/3x2/CA'
+import QA from 'country-flag-icons/string/3x2/QA'
+import CO from 'country-flag-icons/string/3x2/CO'
+import KR from 'country-flag-icons/string/3x2/KR'
+import CI from 'country-flag-icons/string/3x2/CI'
+import HR from 'country-flag-icons/string/3x2/HR'
+import CW from 'country-flag-icons/string/3x2/CW'
+import EC from 'country-flag-icons/string/3x2/EC'
+import EG from 'country-flag-icons/string/3x2/EG'
+import ES from 'country-flag-icons/string/3x2/ES'
+import US from 'country-flag-icons/string/3x2/US'
+import FR from 'country-flag-icons/string/3x2/FR'
+import GH from 'country-flag-icons/string/3x2/GH'
+import HT from 'country-flag-icons/string/3x2/HT'
+import IQ from 'country-flag-icons/string/3x2/IQ'
+import IR from 'country-flag-icons/string/3x2/IR'
+import JP from 'country-flag-icons/string/3x2/JP'
+import JO from 'country-flag-icons/string/3x2/JO'
+import MA from 'country-flag-icons/string/3x2/MA'
+import MX from 'country-flag-icons/string/3x2/MX'
+import NO from 'country-flag-icons/string/3x2/NO'
+import NZ from 'country-flag-icons/string/3x2/NZ'
+import CZ from 'country-flag-icons/string/3x2/CZ'
+import NL from 'country-flag-icons/string/3x2/NL'
+import PA from 'country-flag-icons/string/3x2/PA'
+import PY from 'country-flag-icons/string/3x2/PY'
+import PT from 'country-flag-icons/string/3x2/PT'
+import SN from 'country-flag-icons/string/3x2/SN'
+import ZA from 'country-flag-icons/string/3x2/ZA'
+import SE from 'country-flag-icons/string/3x2/SE'
+import CH from 'country-flag-icons/string/3x2/CH'
+import TN from 'country-flag-icons/string/3x2/TN'
+import UY from 'country-flag-icons/string/3x2/UY'
+import UZ from 'country-flag-icons/string/3x2/UZ'
+import TR from 'country-flag-icons/string/3x2/TR'
+import CD from 'country-flag-icons/string/3x2/CD'
+import GB_SCT from 'country-flag-icons/string/3x2/GB-SCT'
+import GB_ENG from 'country-flag-icons/string/3x2/GB-ENG'
 import { MATCHES, VENUES } from '../../data/matches'
 import { MATCH_COUNTRY_ISO } from '../../utils/match-country-flags'
 import type { Country, Match, MatchPhase } from '../../types'
+
+const TEAM_FLAGS: Partial<Record<string, string>> = {
+  DZ, DE, SA, AR, AU, AT, BE, BA, BR, CV, CA, QA, CO, KR, CI, HR, CW, EC, EG,
+  ES, US, FR, GH, HT, IQ, IR, JP, JO, MA, MX, NO, NZ, CZ, NL, PA, PY, PT,
+  SN, ZA, SE, CH, TN, UY, UZ, TR, CD,
+  'GB-SCT': GB_SCT,
+  'GB-ENG': GB_ENG,
+}
 
 const PHASE_LABELS: Record<MatchPhase, string> = {
   grupos: 'Fase de Grupos',
@@ -25,12 +79,14 @@ function formatDate(dateStr: string): string {
 
 // ─── Team name with flag ──────────────────────────────────────────────────────
 
+const FLAG_CLASS = 'inline-block h-3.5 w-auto shrink-0 rounded-xs shadow-[0_0_0_1px_rgba(255,255,255,0.08)]'
+
 function TeamFlag({ name }: { name: string }) {
   const code = MATCH_COUNTRY_ISO[name]
-  if (!code || !hasFlag(code)) return null
-  const FlagComponent = Flags[code as keyof typeof Flags]
-  if (!FlagComponent) return null
-  return <FlagComponent title={name} className="inline-block h-3.5 w-auto shrink-0 rounded-xs shadow-[0_0_0_1px_rgba(255,255,255,0.08)]" />
+  if (!code) return null
+  const svg = TEAM_FLAGS[code]
+  if (!svg) return null
+  return <img src={`data:image/svg+xml;utf8,${encodeURIComponent(svg)}`} alt={name} className={FLAG_CLASS} />
 }
 
 // ─── Match card ───────────────────────────────────────────────────────────────
