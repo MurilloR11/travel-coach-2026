@@ -1,4 +1,3 @@
-import { useMemo, useState } from 'react'
 import { COUNTRIES } from '../../data/countries'
 import type { Country } from '../../types'
 
@@ -40,50 +39,23 @@ function CountryCard({ country, isSelected, onSelect }: CountryCardProps) {
 }
 
 export function CountrySelector({ selected, onSelect }: CountrySelectorProps) {
-  const [query, setQuery] = useState('')
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (!q) return COUNTRIES
-    return COUNTRIES.filter(c => c.name.toLowerCase().includes(q))
-  }, [query])
-
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-1.5">
-        <label
-          htmlFor="country-search"
-          className="font-mono text-[11px] uppercase tracking-[0.14em] text-brand-amber"
-        >
-          Buscar país
-        </label>
-        <input
-          id="country-search"
-          type="search"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          placeholder="Ej: Colombia, Chile…"
-          className="w-full rounded-xl border border-white/8 bg-brand-navy-mid px-4 py-3 text-[15px] text-brand-off-white placeholder:text-brand-slate transition-colors focus:border-brand-amber/50 focus:outline-none"
-        />
-      </div>
+      <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-brand-amber">
+        Selecciona tu país
+      </p>
 
-      {filtered.length > 0 ? (
-        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4" aria-label="Países disponibles">
-          {filtered.map(country => (
-            <li key={country.code}>
-              <CountryCard
-                country={country}
-                isSelected={selected?.code === country.code}
-                onSelect={onSelect}
-              />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="py-6 text-center text-[15px] text-brand-slate">
-          No se encontró ningún país con ese nombre.
-        </p>
-      )}
+      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4" aria-label="Países disponibles">
+        {COUNTRIES.map(country => (
+          <li key={country.code}>
+            <CountryCard
+              country={country}
+              isSelected={selected?.code === country.code}
+              onSelect={onSelect}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
