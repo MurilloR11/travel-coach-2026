@@ -103,12 +103,13 @@ const s = StyleSheet.create({
   },
   metricsRow: {
     flexDirection: 'row',
-    gap: 24,
+    gap: 16,
     marginBottom: 14,
   },
   metricBlock: {
+    flex: 1,
     flexDirection: 'column',
-    gap: 2,
+    gap: 3,
   },
   metricLabel: {
     fontSize: 9,
@@ -117,9 +118,10 @@ const s = StyleSheet.create({
     textTransform: 'uppercase',
   },
   metricValue: {
-    fontSize: 14,
+    fontSize: 12,
     fontFamily: 'Helvetica-Bold',
     color: '#f1f5f9',
+    lineHeight: 1.4,
   },
   fastTrackBox: {
     backgroundColor: '#1a1500',
