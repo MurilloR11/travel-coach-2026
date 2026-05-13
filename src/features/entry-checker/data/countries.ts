@@ -30,7 +30,7 @@ export const COUNTRIES: Country[] = [
         documentRequired: 'Visa B1/B2',
         status: 'required',
         cost: '$185 USD',
-        processingTime: '12-18 meses (cita consular)',
+        processingTime: 'Variable según la disponibilidad de citas. Consulta el tiempo de espera actualizado en la Embajada de EE. UU. en Bogotá.',
         fastTrack: 'FIFA PASS disponible si tienes boletos oficiales FIFA → cita prioritaria',
         steps: [
           'Llenar formulario DS-160 en línea',
@@ -39,7 +39,7 @@ export const COUNTRIES: Country[] = [
           'Asistir a entrevista con pasaporte vigente y soportes económicos',
         ],
         notes:
-          'Pasaporte con mínimo 6 meses de vigencia. La entrada al partido NO garantiza la visa.',
+          'Pasaporte debe estar vigente durante toda tu estancia en Estados Unidos (se recomienda contar con varios meses extra de vigencia). La entrada al partido NO garantiza la visa.',
       },
       canada: {
         type: 'visa',
@@ -84,7 +84,7 @@ export const COUNTRIES: Country[] = [
         documentRequired: 'Visa B1/B2',
         status: 'required',
         cost: '$185 USD',
-        processingTime: 'Variable según consulado en Buenos Aires',
+        processingTime: 'Variable según la disponibilidad de citas. Consulta el tiempo de espera actualizado en la Embajada de EE. UU. en Buenos Aires.',
         fastTrack: 'FIFA PASS disponible con boletos oficiales FIFA',
         steps: [
           'Llenar formulario DS-160',
@@ -92,7 +92,7 @@ export const COUNTRIES: Country[] = [
           'Agendar cita en embajada de Buenos Aires o Córdoba',
           'Entrevista consular',
         ],
-        notes: 'Pasaporte con mínimo 6 meses de vigencia.',
+        notes: 'Pasaporte debe estar vigente durante toda tu estancia en Estados Unidos (se recomienda contar con varios meses extra de vigencia).',
       },
       canada: {
         type: 'visa',
@@ -130,7 +130,7 @@ export const COUNTRIES: Country[] = [
         documentRequired: 'Visa B1/B2',
         status: 'required',
         cost: '$185 USD',
-        processingTime: 'Variable según consulado',
+        processingTime: 'Variable según la disponibilidad de citas. Consulta el tiempo de espera actualizado en la Embajada de EE. UU. en Brasilia.',
         fastTrack: 'FIFA PASS disponible',
         steps: [
           'Llenar DS-160',
@@ -138,7 +138,7 @@ export const COUNTRIES: Country[] = [
           'Agendar cita consular en Brasil',
           'Entrevista',
         ],
-        notes: 'Pasaporte con mínimo 6 meses de vigencia.',
+        notes: 'Pasaporte debe estar vigente durante toda tu estancia en Estados Unidos (se recomienda contar con varios meses extra de vigencia).',
       },
       canada: {
         type: 'visa',
@@ -176,7 +176,7 @@ export const COUNTRIES: Country[] = [
         documentRequired: 'Visa B1/B2',
         status: 'required',
         cost: '$185 USD',
-        processingTime: 'Variable',
+        processingTime: 'Variable según la disponibilidad de citas. Consulta el tiempo de espera actualizado en la Embajada de EE. UU. en Quito.',
         fastTrack: 'FIFA PASS disponible',
         steps: [
           'Llenar DS-160',
@@ -184,7 +184,7 @@ export const COUNTRIES: Country[] = [
           'Agendar cita consular',
           'Entrevista',
         ],
-        notes: null,
+        notes: 'Pasaporte debe estar vigente durante toda tu estancia en Estados Unidos (se recomienda contar con varios meses extra de vigencia).',
       },
       canada: {
         type: 'visa',
@@ -225,10 +225,10 @@ export const COUNTRIES: Country[] = [
         documentRequired: 'Visa B1/B2',
         status: 'required',
         cost: '$185 USD',
-        processingTime: 'Variable',
+        processingTime: 'Variable según la disponibilidad de citas. Consulta el tiempo de espera actualizado en la Embajada de EE. UU. en Montevideo.',
         fastTrack: 'FIFA PASS disponible',
         steps: ['Llenar DS-160', 'Pagar $185 USD', 'Cita consular', 'Entrevista'],
-        notes: null,
+        notes: 'Pasaporte debe estar vigente durante toda tu estancia en Estados Unidos (se recomienda contar con varios meses extra de vigencia).',
       },
       canada: {
         type: 'visa',
@@ -265,10 +265,10 @@ export const COUNTRIES: Country[] = [
         documentRequired: 'Visa B1/B2',
         status: 'required',
         cost: '$185 USD',
-        processingTime: 'Variable',
+        processingTime: 'Variable según la disponibilidad de citas. Consulta el tiempo de espera actualizado en la Embajada de EE. UU. en Asunción.',
         fastTrack: 'FIFA PASS disponible',
         steps: ['Llenar DS-160', 'Pagar $185 USD', 'Cita consular', 'Entrevista'],
-        notes: null,
+        notes: 'Pasaporte debe estar vigente durante toda tu estancia en Estados Unidos (se recomienda contar con varios meses extra de vigencia).',
       },
       canada: {
         type: 'visa',
@@ -309,10 +309,10 @@ export const COUNTRIES: Country[] = [
         documentRequired: 'Visa B1/B2',
         status: 'required',
         cost: '$185 USD',
-        processingTime: 'Variable',
+        processingTime: 'Variable según la disponibilidad de citas. Consulta el tiempo de espera actualizado en la Embajada de EE. UU. en Ciudad de México.',
         fastTrack: 'FIFA PASS disponible',
         steps: ['Llenar DS-160', 'Pagar $185 USD', 'Cita consular', 'Entrevista'],
-        notes: 'Pasaporte con mínimo 6 meses de vigencia.',
+        notes: 'Pasaporte debe estar vigente durante toda tu estancia en Estados Unidos (se recomienda contar con varios meses extra de vigencia).',
       },
       canada: {
         type: 'none',
