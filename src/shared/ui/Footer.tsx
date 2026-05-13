@@ -24,14 +24,6 @@ const COLUMNS: FooterColumn[] = [
       { label: 'Crear plan completo', to: ROUTES.ENTRY_CHECKER },
     ],
   },
-  {
-    title: 'Legal',
-    links: [
-      { label: 'Fuentes y avisos legales', to: `${ROUTES.LEGAL}#fuentes` },
-      { label: 'Privacidad', to: `${ROUTES.LEGAL}#privacidad` },
-      { label: 'Aviso de responsabilidad', to: `${ROUTES.LEGAL}#responsabilidad` },
-    ],
-  },
 ]
 
 export function Footer() {
