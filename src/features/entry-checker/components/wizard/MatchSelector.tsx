@@ -1,5 +1,8 @@
-import { useMemo, useState } from 'react'
+import { memo, useCallback, useMemo, useState } from 'react'
+import { hasFlag } from 'country-flag-icons'
+import * as Flags from 'country-flag-icons/react/3x2'
 import { MATCHES, VENUES } from '../../data/matches'
+import { MATCH_COUNTRY_ISO } from '../../utils/match-country-flags'
 import type { Country, Match, MatchPhase } from '../../types'
 
 const PHASE_LABELS: Record<MatchPhase, string> = {
@@ -20,6 +23,15 @@ function formatDate(dateStr: string): string {
   return DATE_LONG.format(new Date(year, month - 1, day))
 }
 
+// ─── Team name with flag ──────────────────────────────────────────────────────
+
+function TeamFlag({ name }: { name: string }) {
+  const code = MATCH_COUNTRY_ISO[name]
+  if (!code || !hasFlag(code)) return null
+  const FlagComponent = Flags[code as keyof typeof Flags]
+  return <FlagComponent title={name} className="inline-block h-3.5 w-auto shrink-0 rounded-xs shadow-[0_0_0_1px_rgba(255,255,255,0.08)]" />
+}
+
 // ─── Match card ───────────────────────────────────────────────────────────────
 
 interface MatchCardProps {
@@ -29,7 +41,7 @@ interface MatchCardProps {
   onToggle: (matchId: number) => void
 }
 
-function MatchCard({ match, isSelected, isMyTeam, onToggle }: MatchCardProps) {
+const MatchCard = memo(function MatchCard({ match, isSelected, isMyTeam, onToggle }: MatchCardProps) {
   const venue = VENUES[match.venue]
   const tag = match.group ? `Grupo ${match.group}` : PHASE_LABELS[match.phase]
   const [y, mo, d] = match.date.split('-').map(Number)
@@ -37,10 +49,12 @@ function MatchCard({ match, isSelected, isMyTeam, onToggle }: MatchCardProps) {
   const day = dateObj.getDate()
   const month = MONTH_SHORT.format(dateObj)
 
+  const handleClick = useCallback(() => onToggle(match.id), [onToggle, match.id])
+
   return (
     <button
       type="button"
-      onClick={() => onToggle(match.id)}
+      onClick={handleClick}
       aria-pressed={isSelected}
       aria-label={`${match.home} vs ${match.away} — ${formatDate(match.date)}, ${venue?.city}`}
       className={`flex w-full items-center gap-4 rounded-2xl border px-5 py-4 text-left transition-all duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-amber ${
@@ -63,9 +77,11 @@ function MatchCard({ match, isSelected, isMyTeam, onToggle }: MatchCardProps) {
 
       {/* Match info */}
       <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <p className="truncate text-[15px] font-semibold leading-snug text-brand-off-white">
+        <p className="flex items-center gap-2 truncate text-[15px] font-semibold leading-snug text-brand-off-white">
+          <TeamFlag name={match.home} />
           {match.home}
-          <span className="mx-2 text-[12px] font-normal text-brand-slate">vs</span>
+          <span className="text-[12px] font-normal text-brand-slate">vs</span>
+          <TeamFlag name={match.away} />
           {match.away}
         </p>
         <p className="font-mono text-[11px] text-brand-slate-light">
@@ -91,7 +107,7 @@ function MatchCard({ match, isSelected, isMyTeam, onToggle }: MatchCardProps) {
       </div>
     </button>
   )
-}
+})
 
 // ─── Selector ─────────────────────────────────────────────────────────────────
 
