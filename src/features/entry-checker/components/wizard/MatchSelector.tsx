@@ -50,12 +50,12 @@ const MatchCard = memo(function MatchCard({ match, isSelected, isMyTeam, onToggl
   const day = dateObj.getDate()
   const month = MONTH_SHORT.format(dateObj)
 
-  const handleClick = useCallback(() => onToggle(match.id), [onToggle, match.id])
+  const toggleMatchSelection = useCallback(() => onToggle(match.id), [onToggle, match.id])
 
   return (
     <button
       type="button"
-      onClick={handleClick}
+      onClick={toggleMatchSelection}
       aria-pressed={isSelected}
       aria-label={`${match.home} vs ${match.away} — ${formatDate(match.date)}, ${venue?.city}`}
       className={`flex w-full items-center gap-4 rounded-2xl border px-5 py-4 text-left transition-all duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-amber ${

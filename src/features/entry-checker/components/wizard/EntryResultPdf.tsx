@@ -290,7 +290,7 @@ export function EntryResultPdf({ selectedCountry, hostCountries, requirements }:
               {/* Steps */}
               <Text style={s.stepsLabel}>Pasos</Text>
               {req.steps.map((step, i) => (
-                <View key={i} style={s.stepRow}>
+                <View key={step} style={s.stepRow}>
                   <Text style={s.stepNumber}>{String(i + 1).padStart(2, '0')}</Text>
                   <Text style={s.stepText}>{step}</Text>
                 </View>
