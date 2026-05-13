@@ -1,3 +1,5 @@
+import { hasFlag } from 'country-flag-icons'
+import * as Flags from 'country-flag-icons/react/3x2'
 import { COUNTRIES } from '../../data/countries'
 import type { Country } from '../../types'
 
@@ -10,6 +12,12 @@ interface CountryCardProps {
   country: Country
   isSelected: boolean
   onSelect: (country: Country) => void
+}
+
+function CountryFlag({ code }: { code: string }) {
+  if (!hasFlag(code)) return null
+  const FlagComponent = Flags[code as keyof typeof Flags]
+  return <FlagComponent title={code} className="h-7 w-auto rounded-sm object-cover shadow-sm" />
 }
 
 function CountryCard({ country, isSelected, onSelect }: CountryCardProps) {
@@ -25,9 +33,7 @@ function CountryCard({ country, isSelected, onSelect }: CountryCardProps) {
           : 'border-white/8 bg-brand-navy-mid text-brand-slate-light hover:border-brand-amber/40 hover:text-brand-off-white'
       }`}
     >
-      <span className="font-mono text-[17px] font-bold tracking-widest leading-none">
-        {country.code}
-      </span>
+      <CountryFlag code={country.code} />
       <span className="font-mono text-[10px] font-medium tracking-wide">{country.name}</span>
       {isSelected && (
         <span className="font-mono text-[10px] tracking-widest text-brand-amber" aria-hidden="true">
