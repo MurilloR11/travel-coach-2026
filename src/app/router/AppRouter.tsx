@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { PublicLayout } from '@/app/layouts/PublicLayout'
+import { LegalLayout } from '@/app/layouts/LegalLayout'
 import { PrivateLayout } from '@/app/layouts/PrivateLayout'
+import { PublicLayout } from '@/app/layouts/PublicLayout'
 
 function PageSpinner() {
   return (
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
             Component: m.RoutePlannerPage,
           })),
       },
+    ],
+  },
+  {
+    element: <LegalLayout />,
+    children: [
       {
         path: '/legal',
         lazy: () =>
