@@ -1,13 +1,9 @@
-import { Suspense, lazy } from 'react'
 import { useEntryWizard } from '../../hooks/useEntryWizard'
 import type { WizardStep } from '../../hooks/useEntryWizard'
 import { ChecklistResult } from './ChecklistResult'
 import { CountrySelector } from './CountrySelector'
+import { EntryPdfDownloadButton } from './EntryPdfDownloadButton'
 import { MatchSelector } from './MatchSelector'
-
-const EntryPdfDownloadButton = lazy(() =>
-  import('./EntryPdfDownloadButton').then(m => ({ default: m.EntryPdfDownloadButton }))
-)
 
 const STEP_LABELS: Record<WizardStep, string> = {
   1: 'Selecciona tu pasaporte',
@@ -93,19 +89,11 @@ export function EntryWizard() {
           </button>
         ) : (
           selectedCountry && requirements && (
-            <Suspense
-              fallback={
-                <span className="font-mono rounded-full bg-brand-amber/40 px-6 py-2.5 text-[12px] uppercase tracking-widest text-brand-navy font-semibold">
-                  Cargando…
-                </span>
-              }
-            >
-              <EntryPdfDownloadButton
-                selectedCountry={selectedCountry}
-                hostCountries={hostCountries}
-                requirements={requirements}
-              />
-            </Suspense>
+            <EntryPdfDownloadButton
+              selectedCountry={selectedCountry}
+              hostCountries={hostCountries}
+              requirements={requirements}
+            />
           )
         )}
       </div>
