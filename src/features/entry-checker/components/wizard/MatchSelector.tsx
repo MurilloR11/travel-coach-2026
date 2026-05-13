@@ -29,6 +29,7 @@ function TeamFlag({ name }: { name: string }) {
   const code = MATCH_COUNTRY_ISO[name]
   if (!code || !hasFlag(code)) return null
   const FlagComponent = Flags[code as keyof typeof Flags]
+  if (!FlagComponent) return null
   return <FlagComponent title={name} className="inline-block h-3.5 w-auto shrink-0 rounded-xs shadow-[0_0_0_1px_rgba(255,255,255,0.08)]" />
 }
 
